@@ -5,10 +5,10 @@ JavaScript, but with extra features.
 ## Features
 
 * Built-in enum support.
+* Built-in library for console colors.
 * Compile-time code optimization.
 * Now you can use `await` outside a function.
 * Support for bundling multiple files into one (BETA).
-* Built-in library for console colors.
 * Extended Math library.
 * A large amount of built-in functions.
 
