@@ -1,0 +1,169 @@
+/**
+ * An enum that has common time intervals in milliseconds
+ *
+ * @enum {number}
+ */
+enum Time {
+	Second = 1000,
+    Minute = 60000,
+	Hour = 3600000,
+	Day = 86400000,
+	Month = 2592000000,
+	Year = 31536000000
+}
+
+/**
+ * The data types enum. Useful for the `enforceType()` function
+ * 
+ * @enum {string}
+ */
+enum DataTypes {
+    Number = "number",
+    String = "string",
+    Object = "object",
+    BigInt = "bigint",
+    Boolean = "boolean",
+    Array = "array",
+    Function = "function",
+    Undefined = "undefined",
+    Symbol = "symbol",
+    Null = "null"
+};
+
+/**
+ * Function to enforce a specific data type on a value.
+ * Throws an error if the value's type does not match the specified type.
+ * 
+ * @param {*} value - The value to be checked.
+ * @param {DataTypes} type - The data type to enforce (e.g., "number", "string", "object").
+ * @throws {Error} Throws an error if the type check fails.
+ */
+function enforceType(value, type) {
+    if (typeof value !== type) {
+        throw new Error(`Type of "${value}" is "${typeof value}", when it should be "${type}".`);
+    }
+};
+
+/**
+ * Sleeps for the specified time in milliseconds.
+ * 
+ * @param {number} [milliseconds] 
+ * @returns {Promise<void>}
+ */
+function sleep(milliseconds = MAX_INT32_VALUE) {
+    return new Promise(resolve => setTimeout(resolve, milliseconds));
+};
+
+/**
+ * Returns a number (not a float like Math.random()) within the specified range
+ *
+ * @param {number} [min]
+ * @param {number} [max]
+ * 
+ * @returns {number}
+ */
+Math.nRandom = function (min = 0, max = 100) {
+    return Math.floor(Math.random() * (max - min) + min);
+}
+
+/**
+ * Returns the square of the specified number
+ * 
+ * @param {number} [number]
+ * @returns {number}
+ */
+Math.square = function (number) {
+    enforceType(number, DataTypes.Number);
+
+    return number * 2;
+}
+
+/**
+ * Calculates the floating-point remainder of dividing the dividend by the divisor.
+ * 
+ * @param {number} [dividend]
+ * @param {number} [divisor]
+ * @returns {number}
+ */
+Math.fmod = function (dividend, divisor) {
+    return ((dividend % divisor) + divisor) % divisor;
+}
+
+/**
+ * Rounds the float to the specified number of digits after the decimal point.
+ * 
+ * @param {number} [x]
+ * @param {number} [digits]
+ * @returns {number}
+ */
+Math.fround = function (x, digits = 1) {
+	return parseFloat(x.toFixed(digits));
+}
+
+/**
+ * Returns a random element that is in the array
+ *
+ * @returns {any}
+ */
+Array.prototype.random = function () {
+    const array = this;
+
+    return this[Math.nRandom(0, array.length)];
+}
+
+Array.prototype.contains = Array.prototype.includes;
+String.prototype.contains = String.prototype.includes;
+
+/**
+ * Returns true if the specified object is defined, false otherwise.
+ * This is an alias to `typeof object == ! "undefined"`
+ * 
+ * @param {any} object 
+ * @returns {boolean}
+ */
+function isDefined(object) {
+    return !(typeof object == DataTypes.Undefined);
+}
+
+/**
+ * An enum of all possible environments that your app can run in.
+ * 
+ * @enum {string}
+ */
+enum RunningEnvironments {
+    Node,
+    Bun,
+    Browser,
+    Unknown
+};
+
+/**
+ * Returns the environment that your app is running in.
+ * 
+ * @returns {RunningEnvironments}
+ */
+function getRunningEnvironment() {
+    if (!isDefined(process) && process.release?.name === 'node') {
+        return RunningEnvironments.Node;
+    }
+
+    if (!isDefined(process) && process.versions.bun) {
+        return RunningEnvironments.Bun;
+    }
+
+    if (isDefined(this.window)) {
+        return RunningEnvironments.Browser;
+    }
+
+    return RunningEnvironments.Unknown;
+}
+
+/**
+ * Returns the environment that your app is running in.
+ * This is an alias to `getRunningEnvironment()`
+ * 
+ * @returns {RunningEnvironments}
+ */
+function getRunningEnv() {
+    return getRunningEnvironment();
+}

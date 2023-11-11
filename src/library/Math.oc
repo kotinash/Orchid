@@ -1,0 +1,125 @@
+/**
+ * The minimum value for an 8-bit signed integer.
+ *
+ * @type {number}
+ */
+const MIN_INT8_VALUE = -128;
+
+/**
+ * The maximum value for an 8-bit signed integer.
+ *
+ * @type {number}
+ */
+const MAX_INT8_VALUE = 127;
+
+/**
+ * The minimum value for a 16-bit signed integer.
+ *
+ * @type {number}
+ */
+const MIN_INT16_VALUE = -32768;
+
+/**
+ * The maximum value for a 16-bit signed integer.
+ *
+ * @type {number}
+ */
+const MAX_INT16_VALUE = 32767;
+
+/**
+ * The minimum value for a 24-bit signed integer.
+ *
+ * @type {number}
+ */
+const MIN_INT24_VALUE = -8388608;
+
+/**
+ * The maximum value for a 24-bit signed integer.
+ *
+ * @type {number}
+ */
+const MAX_INT24_VALUE = 8388607;
+
+/**
+ * The minimum value for a 32-bit signed integer.
+ *
+ * @type {number}
+ */
+const MIN_INT32_VALUE = -2147483648;
+
+/**
+ * The maximum value for a 32-bit signed integer.
+ *
+ * @type {number}
+ */
+const MAX_INT32_VALUE = 2147483647;
+
+/**
+ * The minimum value for an 8-bit unsigned integer.
+ *
+ * @type {number}
+ */
+const MIN_UINT8_VALUE = 0;
+
+/**
+ * The maximum value for an 8-bit unsigned integer.
+ *
+ * @type {number}
+ */
+const MAX_UINT8_VALUE = 255;
+
+/**
+ * The minimum value for a 16-bit unsigned integer.
+ *
+ * @type {number}
+ */
+const MIN_UINT16_VALUE = 0;
+
+/**
+ * The maximum value for a 16-bit unsigned integer.
+ *
+ * @type {number}
+ */
+const MAX_UINT16_VALUE = 65535;
+
+/**
+ * The minimum value for a 24-bit unsigned integer.
+ *
+ * @type {number}
+ */
+const MIN_UINT24_VALUE = 0;
+
+/**
+ * The maximum value for a 24-bit unsigned integer.
+ *
+ * @type {number}
+ */
+const MAX_UINT24_VALUE = 16777215;
+
+/**
+ * The minimum value for a 32-bit unsigned integer.
+ *
+ * @type {number}
+ */
+const MIN_UINT32_VALUE = 0;
+
+/**
+ * The maximum value for a 32-bit unsigned integer.
+ *
+ * @type {number}
+ */
+const MAX_UINT32_VALUE = 4294967295;
+
+/**
+ * The minimum value for a 32-bit floating-point number.
+ *
+ * @type {number}
+ */
+const MIN_FLOAT_VALUE = -3.4028234663852886e+38;
+
+/**
+ * The maximum value for a 32-bit floating-point number.
+ *
+ * @type {number}
+ */
+const MAX_FLOAT_VALUE = 3.4028234663852886e+38;
