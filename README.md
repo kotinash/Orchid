@@ -90,7 +90,7 @@ We strongly recommend using [Hyacinth](https://github.com/kotinash/Hyacinth) for
 1. Install Node.js.
 1. Clone this repository.
 3. Download all dependencies (`npm install`)
-4. Compiling:
+4. Usage:
 * `npm run dev` for a development version. 
 * `npm run release` for a release version. 
 * `npm run bundle` for a bundled version.
