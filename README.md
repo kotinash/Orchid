@@ -1,16 +1,16 @@
 # Orchid
 
-JavaScript, but with extra features
+JavaScript, but with extra features.
 
 ## Features
 
-* Enums
-* Compile-time code optimization
-* Now you can use `await` without defining a function
-* Support for bundling multiple files into one (BETA)
-* Built-in library for console colors
-* Extended Math library
-* A large amount of built-in functions
+* Built-in enum support.
+* Compile-time code optimization.
+* Now you can use `await` without defining a function.
+* Support for bundling multiple files into one (BETA).
+* Built-in library for console colors.
+* Extended Math library.
+* A large amount of built-in functions.
 
 ## Examples
 
@@ -89,7 +89,7 @@ We strongly recommend using [Hyacinth](https://github.com/kotinash/Hyacinth) for
 
 1. Install Node.js.
 1. Clone this repository.
-3. Download all dependencies (`npm install`)
+3. Download all dependencies (`npm install`).
 4. Usage:
 * `npm run dev` for a development version. 
 * `npm run release` for a release version. 
@@ -97,5 +97,5 @@ We strongly recommend using [Hyacinth](https://github.com/kotinash/Hyacinth) for
 
 ## Planned features
 
-1. Macros
-2. Built-in logging library with support for log levels and saving the logs into a file
+1. Macro support.
+2. Built-in logging library with support for log levels and saving the logs into a file.
