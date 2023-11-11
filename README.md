@@ -2,12 +2,14 @@
 
 JavaScript, but with extra features
 
+We strongly recommend using [Hyacinth](https://github.com/kotinash/Hyacinth) for compiling Orchid projects. It simplifies the compilation process, to just running 1 file.
+
 ## Features
 
 * Enums
 * Compile-time code optimization
 * Now you can use `await` without defining a function
-* Support for bundling multiple files into one
+* Support for bundling multiple files into one (BETA)
 * Built-in library for console colors
 * Extended Math library
 * A large amount of built-in functions
@@ -79,7 +81,7 @@ module.exports = {
 hello.main();
 ```
 
-## Usage
+## Usage (without Hyacinth)
 
 * `npm run dev` for a development version. 
 * `npm run release` for a release version. 
