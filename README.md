@@ -6,7 +6,7 @@ JavaScript, but with extra features.
 
 * Built-in enum support.
 * Compile-time code optimization.
-* Now you can use `await` without defining a function.
+* Now you can use `await` outside a function.
 * Support for bundling multiple files into one (BETA).
 * Built-in library for console colors.
 * Extended Math library.
