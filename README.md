@@ -2,22 +2,6 @@
 
 JavaScript, but with extra features
 
-## Compiling
-
-## With Hyacinth
-
-We strongly recommend using [Hyacinth](https://github.com/kotinash/Hyacinth) for compiling Orchid projects. It simplifies the compilation process, to just running 1 file.
-
-## Without Hyacinth
-
-1. Install Node.js.
-1. Clone this repository.
-3. Download all dependencies (`npm install`)
-4. Compiling:
-* `npm run dev` for a development version. 
-* `npm run release` for a release version. 
-* `npm run bundle` for a bundled version.
-
 ## Features
 
 * Enums
@@ -94,6 +78,22 @@ module.exports = {
 // main.oc
 hello.main();
 ```
+
+## Compiling
+
+### With Hyacinth
+
+We strongly recommend using [Hyacinth](https://github.com/kotinash/Hyacinth) for compiling Orchid projects. It simplifies the compilation process, to just running 1 file.
+
+### Without Hyacinth
+
+1. Install Node.js.
+1. Clone this repository.
+3. Download all dependencies (`npm install`)
+4. Compiling:
+* `npm run dev` for a development version. 
+* `npm run release` for a release version. 
+* `npm run bundle` for a bundled version.
 
 ## Planned features
 
