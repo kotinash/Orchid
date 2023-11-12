@@ -1,4 +1,5 @@
 const terser = require("terser");
+
 const Logger = require("../utils/Logger");
 
 /**
@@ -38,6 +39,7 @@ module.exports = {
 
             if (result.error) {
                 Logger.error("Terser error: " + result.error);
+                process.exit(1);
             }
 
             return result.code;
