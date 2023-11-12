@@ -22,9 +22,9 @@ async function compileDirectory(directory) {
                 await compileDirectory(filePath);
             } else if (fs.statSync(filePath).isFile() && path.extname(directoryFile) === ".oc") {
                 let contents = (
-                    fs.readFileSync("./src/library/Orchid.oc") +
-                    fs.readFileSync("./src/library/Colors.oc") +
-                    fs.readFileSync("./src/library/Math.oc") +
+                    fs.readFileSync(".\\src\\library\\Orchid.oc") +
+                    fs.readFileSync(".\\src\\library\\Colors.oc") +
+                    fs.readFileSync(".\\src\\library\\Math.oc") +
                     "\n"
                 )
 
