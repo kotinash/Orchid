@@ -24,7 +24,7 @@ module.exports = {
                 },
                 mangle: {
                     eval: true,
-                    keep_classnames: safe,
+                    keep_classnames: !safe,
                     keep_fnames: false,
                     toplevel: false,
                     safari10: false
@@ -42,7 +42,7 @@ module.exports = {
 
             return result.code;
         } catch (error) {
-            Logger.error("Error while optimizing: " + error.message);
+            Logger.error("Error while optimizing: " + error.stack);
         }
     }
 };
