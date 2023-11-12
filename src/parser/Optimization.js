@@ -39,12 +39,12 @@ module.exports = {
 
             if (result.error) {
                 Logger.error("Terser error: " + result.error);
-                process.exit(1);
             }
 
             return result.code;
         } catch (error) {
             Logger.error("Error while optimizing: " + error.stack);
+            process.exit(1);
         }
     }
 };
