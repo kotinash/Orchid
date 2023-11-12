@@ -2,10 +2,10 @@ const fs = require("fs");
 
 module.exports = {
     /**
-     * Parses the code
+     * Parses the code passed into the `code` parameter.
      * 
-     * @param {string} code 
-     * @returns {string}
+     * @param {string} code - The code to parse
+     * @returns {string} The parsed output
      */
     parse(code) {
         let lines = code;
