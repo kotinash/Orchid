@@ -28,7 +28,7 @@ async function compileDirectory(directory) {
                     "\n"
                 )
 
-                if (filePath.includes("src/library/")) return;
+                if (filePath.includes("src\\library\\")) return;
 
                 Logger.info("Compiling " + directoryFile);
 
