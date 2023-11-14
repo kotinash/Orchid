@@ -20,6 +20,8 @@ console.log("Hello, World!");
 ```
 
 ```ts
+// An example showcasing most of Orchid features.
+
 enum UserType {
     Default,
     Premium
@@ -77,7 +79,27 @@ console.log("Random user", users.random());
 ```
 
 ```ts
-// Bundling example
+// Calling a private function.
+
+class Person {
+    public name = "John";
+
+    private leave() {
+        console.log("Left!");
+    }
+
+    public join() {
+        console.log("Joined!");
+
+        this.#leave(); // In order to call a private function, you have to put `#` before it's name.
+    }
+}
+
+new Person().join();
+```
+
+```ts
+// Bundling example.
 
 // hello.oc
 module.exports = {
