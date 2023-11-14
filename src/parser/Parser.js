@@ -15,6 +15,7 @@ module.exports = {
         for (let i = 0; i < linesArray.length; i++) {
             const line = linesArray[i].trim();
 
+            // "public"/"private"/"public async"/"private async" keywords
             if (!/(let|const|var)\s/.test(line)) {
                 if (linesArray[i].includes("public ") && !linesArray[i].includes("*")) {
                     linesArray[i] = linesArray[i].replace("public ", "/* public */ ");
@@ -22,6 +23,14 @@ module.exports = {
 
                 if (linesArray[i].includes("private ")) {
                     linesArray[i] = linesArray[i].replace("private ", "#");
+                }
+                
+                if (linesArray[i].includes("public async ") && !linesArray[i].includes("*")) {
+                    linesArray[i] = linesArray[i].replace("public async ", "/* public */ async");
+                }
+
+                if (linesArray[i].includes("private async ")) {
+                    linesArray[i] = linesArray[i].replace("private async ", "async #");
                 }
             }
 
