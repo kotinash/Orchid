@@ -6,6 +6,21 @@ const Optimization = require("./src/parser/Optimization");
 const Parser = require("./src/parser/Parser");
 
 /**
+ * The path where the libraries are stored.
+ * 
+ * @type {string}
+ */
+const libraryPath = path.join("src", "library");
+
+/**
+ * @param {string} library
+ * @returns {library}
+ */
+function toLibrary(library) {
+    return path.join(".", libraryPath, library);    
+}
+
+/**
  * Compiles all files in the specified directory.
  * 
  * @param {string} directory
@@ -22,28 +37,29 @@ async function compileDirectory(directory) {
                 await compileDirectory(filePath);
             } else if (fs.statSync(filePath).isFile() && path.extname(directoryFile) === ".oc") {
                 let contents = (
-                    fs.readFileSync(".\\src\\library\\Orchid.oc") +
-                    fs.readFileSync(".\\src\\library\\Colors.oc") +
-                    fs.readFileSync(".\\src\\library\\Math.oc") +
+                    fs.readFileSync(toLibrary("Orchid.oc")) +
+                    fs.readFileSync(toLibrary("Colors.oc")) +
+                    fs.readFileSync(toLibrary("Math.oc")) +
                     "\n"
                 )
 
-                if (filePath.includes("src\\library\\")) return;
+                if (filePath.includes(libraryPath)) return;
 
                 Logger.info("Compiling " + directoryFile);
 
                 const fileContents = fs.readFileSync(filePath, "utf8");
+                const isMainFile = directoryFile == "main.oc";
 
                 contents = Parser.parse(contents + fileContents.toString());
 
-                if (directoryFile == "main.oc") {
-                    contents = "(async function () {" + Parser.parse(contents, true) + "})();";
+                if (isMainFile) {
+                    contents = "(async function () {" + Parser.parse(contents) + "})();";
                 } else {
                     contents = Parser.parse(contents);
                 }
 
                 if (!process.argv.includes("--noOptimization")) {
-                    contents = await Optimization.optimize(contents);
+                    contents = await Optimization.optimize(contents, !isMainFile);
                 }
 
                 if (process.argv.includes("--bundle")) {

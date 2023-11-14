@@ -1,5 +1,3 @@
-const fs = require("fs");
-
 module.exports = {
     /**
      * Parses the code passed into the `code` parameter.
@@ -15,9 +13,26 @@ module.exports = {
         let enumName;
 
         for (let i = 0; i < linesArray.length; i++) {
-            let line = linesArray[i].trim();
+            const isInString = (
+                linesArray[i].includes("\"") ||
+                linesArray[i].includes("'") ||
+                linesArray[i].includes("`")
+            );
 
-            // Parsing enumns
+            const line = linesArray[i].trim();
+
+            // "public"/"private" keywords
+            if (!isInString) {
+                if (linesArray[i].includes("public ") && !linesArray[i].includes("*")) {
+                    linesArray[i] = linesArray[i].replace("public ", "/* public */ ");
+                }
+
+                if (linesArray[i].includes("private ")) {
+                    linesArray[i] = linesArray[i].replace("private ", "#");
+                }
+            }
+
+            // Enums
             if (inEnumBlock) {
                 if (line.includes("=")) {
                     linesArray[i] = `${line.replace("=", ":")}`

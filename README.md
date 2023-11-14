@@ -6,6 +6,7 @@ JavaScript, but with extra features.
 
 * Built-in enum support.
 * Built-in library for console colors.
+* `public`/`private` keywords.
 * Compile-time code optimization.
 * Now you can use `await` outside a function.
 * Support for bundling multiple files into one (BETA).
@@ -25,21 +26,31 @@ enum UserType {
 }
 
 class User {
-    constructor(username, type, age = Math.nRandom(1, 100)) {
+    constructor(username, type) {
         enforceType(username, DataTypes.String);
-        enforceType(age, DataTypes.Number);
 
         this.username = username;
         this.type = type;
-        this.age = age;
+        this.age = Math.nRandom(1, 100);
+        this.isConnected = true;
     }
 
-    say(message) {
-        if (!isDefined(message)) {
-            throw new Error("Oops! Message is not defined");
+    private disconnect(reason) {
+        if (!this.isConnected) {
+            throw new Error("Cannot disconnect an already offline user.");
         }
 
-        console.log(`${this.username}: ${message}`);
+        console.log(`${this.username} disconnected! (${reason})`);
+
+        this.isConnected = false;
+    }
+
+    public say(message) {
+        if (!isDefined(message)) {
+            this.disconnect("Message is not defined.");
+        }
+
+        console.log(`${this.username} (${this.age}): ${message}`);
     }
 }
 
@@ -53,16 +64,16 @@ const user2 = new User("user2", UserType.Premium);
 const users = [ user1, user2 ]
 
 user1.say("Hello!");
-user1.say("My age is " + user1.age);
-user1.say("Square of my age is " + Math.square(user1.age));
+user1.say("I am " + user1.age + " years old!");
+user1.say("The square of my age is " + Math.square(user1.age));
 
 await sleep(1000);
 
 user2.say("Hello!");
-user2.say("My age is " + user2.age);
-user2.say("Square of my age is " + Math.square(user2.age));
+user2.say("I am " + user2.age + " years old!");
+user2.say("The square of my age is " + Math.square(user2.age));
 
-console.log("Random user: ", users.random());
+console.log("Random user", users.random());
 ```
 
 ```ts
