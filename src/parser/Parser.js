@@ -13,16 +13,9 @@ module.exports = {
         let enumName;
 
         for (let i = 0; i < linesArray.length; i++) {
-            const isInString = (
-                linesArray[i].includes("\"") ||
-                linesArray[i].includes("'") ||
-                linesArray[i].includes("`")
-            );
-
             const line = linesArray[i].trim();
 
-            // "public"/"private" keywords
-            if (!isInString) {
+            if (!/(let|const|var)\s/.test(line)) {
                 if (linesArray[i].includes("public ") && !linesArray[i].includes("*")) {
                     linesArray[i] = linesArray[i].replace("public ", "/* public */ ");
                 }
