@@ -2,15 +2,15 @@ const terser = require("terser");
 
 const Logger = require("../utils/Logger");
 
-/**
- * Optimizes the code passed into the `code` parameter.
- * 
- * @param {string} code - The code to optimize.
- * @param {boolean} safe - If true, retains class and function names during optimization.
- * @returns {string} - The optimized JavaScript code.
- * @throws {Error} - If an error occurs during the optimization process.
- */
 module.exports = {
+    /**
+     * Optimizes the code passed into the `code` parameter.
+     * 
+     * @param {string} code - The code to optimize.
+     * @param {boolean} [safe] - If true, retains class and function names during optimization.
+     * @returns {string} - The optimized JavaScript code.
+     * @throws {Error} - If an error occurs during the optimization process.
+     */
     async optimize(code, safe = false) {
         try {
             const result = await terser.minify(code, {
@@ -44,7 +44,6 @@ module.exports = {
             return result.code;
         } catch (error) {
             Logger.error("Error while optimizing: " + error.stack);
-            process.exit(1);
         }
     }
 };
